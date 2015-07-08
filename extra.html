@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=utf-8"> 
+   <title>SFL 101: extras</title>
+
+<meta name="generator" content="slideshow">
+<meta name="author"    content="Simon Piette <simon.piette@savoirfairelinux.net>" >
+
+<!-- SyntaxHighlighter (sh) style sheet; goes first so we can override styles if needed -->
+<!-- todo: add theme-ing support -->
+<link rel="stylesheet" href="highlighter/shCoreDefault.css">
+
+<!-- S6 style sheet links -->
+<link rel="stylesheet" href="extra.css"  media="projection" id="styleProjection">
+<link rel="stylesheet" href="s6/screen.css"          media="screen" id="styleScreen">
+<link rel="stylesheet" href="s6/print.css"           media="print">
+
+<!-- S6 JS -->
+<script src="s6/jquery.js"></script>
+<script src="s6/jquery.slideshow.js"></script>
+
+<!-- SyntaxHighlighter (sh) machinery -->
+<script src="highlighter/shCore.js"></script>
+
+<!-- SyntaxHighlighter brushes, remove those for languages you don't need --> 
+<script src="highlighter/shBrushAppleScript.js"></script>
+<script src="highlighter/shBrushAS3.js"></script>
+<script src="highlighter/shBrushBash.js"></script>
+<script src="highlighter/shBrushColdFusion.js"></script>
+<script src="highlighter/shBrushCpp.js"></script>
+<script src="highlighter/shBrushCSharp.js"></script>
+<script src="highlighter/shBrushCss.js"></script>
+<script src="highlighter/shBrushDelphi.js"></script>
+<script src="highlighter/shBrushDiff.js"></script>
+<script src="highlighter/shBrushErlang.js"></script>
+<script src="highlighter/shBrushGroovy.js"></script>
+<script src="highlighter/shBrushJavaFX.js"></script>
+<script src="highlighter/shBrushJava.js"></script>
+<script src="highlighter/shBrushJScript.js"></script>
+<script src="highlighter/shBrushPerl.js"></script>
+<script src="highlighter/shBrushPhp.js"></script>
+<script src="highlighter/shBrushPlain.js"></script>
+<script src="highlighter/shBrushPowerShell.js"></script>
+<script src="highlighter/shBrushPython.js"></script>
+<script src="highlighter/shBrushRuby.js"></script>
+<script src="highlighter/shBrushSass.js"></script>
+<script src="highlighter/shBrushScala.js"></script>
+<script src="highlighter/shBrushSql.js"></script>
+<script src="highlighter/shBrushVb.js"></script>
+<script src="highlighter/shBrushXml.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+  Slideshow.init();
+  SyntaxHighlighter.all();
+} );
+
+  
+ 
+</script>
+
+<!-- Better Browser Banner for Microsoft Internet Explorer (IE) -->
+<!--[if IE]>
+<script src="s6/jquery.microsoft.js"></script>
+<![endif]-->
+
+
+
+</head>
+<body>
+
+<div class="layout"> 
+  <div id="header"></div>
+  <div id="footer">
+    <h1>Savoir-faire Linux</h1>
+    <h2>SFL!</h2>
+  </div>
+</div><!-- layout -->
+
+<div class="presentation">
+   
+<div class='slide '>
+
+<!-- _S9SLIDE_ -->
+<h1>SFL-101: matériel supplémentaire</h1>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>nano</h1>
+<ul>
+	<li>Un éditeur facile à utiliser, mais peu puissant, hérité de pico
+<pre>
+nano /etc/network/interfaces
+</pre></li>
+	<li>Pour sauver/quitter: <code>^O</code> / <code>^X</code></li>
+	<li>Pour copier/coller: <code>^K</code> / <code>^U</code></li>
+	<li>Pour rechercher/remplacer: <code>^W</code> / <code>^\</code></li>
+	<li>Pour afficher l&#8217;emplacement dans le fichier: <code>^C</code></li>
+	<li>Pour l&#8217;invocation de nano: <code>nano --help</code></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>tar</h1>
+<p>tar est un format de fichier d&#8217;archivage et une commande. Le nom provient de Tape ARchive: à l&#8217;origine la commande tar était utilisée pour faire des sauvegardes sur tape. Le format tar ne comprend pas de compression, mais la commande tar peut compresser une archive tar au moment de sa création.</p>
+<p>Il y a trois actions principales que l&#8217;on fait avec tar:</p>
+<ul>
+	<li>c : create</li>
+	<li>x : extract</li>
+	<li>t : table of content (list)</li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>tar : création d&#8217;archive</h1>
+<ul>
+	<li>f : nom du fichier d&#8217;archive</li>
+	<li>z : utiliser la compression gzip (pas dans busybox)</li>
+	<li>j : utiliser la compression bzip2 (pas dans busybox)</li>
+	<li>J : utiliser la compression xz (pas dans busybox)</li>
+	<li>&#8212;help</li>
+</ul>
+<pre>
+tar cf /var/tmp/etc.tar /etc
+gzip /var/tmp/etc.tar.gz
+</pre>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Exercices</h1>
+<ol>
+	<li>Changer le contenu du fichier /etc/issue pour &#8220;Welcome to Bathium Buildroot&#8221;</li>
+	<li>Faire une copie du fichier /etc/services. Sur cette copie, changer toutes les occurences de <strong>tcp</strong> par <strong>udp</strong> et de <strong>udp</strong> par <strong>tcp</strong>.</li>
+	<li>Faire une archive de /usr/share/zoneinfo, mais sans le sous-répertoire /usr/share/zoneinfo/right. Le contenu devrait être relatif à /usr/share. Bonus: ne pas utiliser l&#8217;option <strong><code>z</code></strong>, ni de fichier temporaire pour créer une archive compressée.</li>
+</ol>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Configuration IP</h1>
+<ul>
+	<li>IP (Internet Protocol) est un protocole d&#8217;adressage réseau.</li>
+	<li>La configuration d&#8217;un noeud IP doit comprendre au minimum les éléments suivants:
+	<ul>
+		<li>Adresse</li>
+		<li>Masque</li>
+	</ul></li>
+	<li>Typiquement, la configuration IP va également comprendre:
+	<ul>
+		<li>Passerelle (gateway ou routeur)</li>
+		<li>Serveurs DNS
+Le noyau utise le masque pour déterminer si une adresse à laquelle il doit envoyer un paquet doit passer par le routeur ou non.
+La librairie (libc) utilise le(s) serveur DNS pour résoudre les noms (www.bathium.com) en adresse IP.</li>
+	</ul></li>
+	<li>La configuration IP se fait par quelques fichiers qui ont tous une page de manuel</li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Configuration IP: hostname et FQDN</h1>
+<ul>
+	<li>Fully Qualified Domain Name</li>
+	<li>/etc/hostname
+	<ul>
+		<li>Pas le FQDN, seulement le hostname</li>
+	</ul></li>
+	<li>hostname(1) et dnsdomainname(1)
+	<ul>
+		<li><code>hostname</code> vs <code>hostname -f</code></li>
+	</ul></li>
+	<li>/etc/nsswitch.conf
+	<ul>
+		<li>hosts: utilisé par gethostbyname(3), getaddrinfo(3)</li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Configuration IP: /etc/hosts</h1>
+<ul>
+	<li>/etc/hosts
+	<ul>
+		<li>utilisé par la librairie C standard</li>
+	</ul></li>
+	<li><em>ip</em> <em>fqdn1</em> <em>fqdn2</em> <em>shortname</em>
+	<ul>
+		<li>entrée pour localhost</li>
+		<li>127.0.1.1 pour IP dynamique</li>
+		<li>sert aussi pour les entrées numériques</li>
+		<li><code>getent hosts &lt;entrée&gt;</code> pour vérifier comment la librairie interprète le fichier.</li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Configuration IP: /etc/resolv.conf</h1>
+<ul>
+	<li>/etc/resolv.conf
+	<ul>
+		<li>nameserver <ip> : une ou plusieurs fois</li>
+		<li>domain: la partie &#8220;domain&#8221; du FQDN</li>
+		<li>search: utilisé par gethostbyname(3), max. 6</li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Configuration IP: interfaces</h1>
+<ul>
+	<li>/etc/network/interfaces
+	<ul>
+		<li>auto <iface>: active automatiquement l&#8217;interface</li>
+		<li>iface: déclaration d&#8217;une interface
+		<ul>
+			<li><code>iface eth0 inet dhcp</code></li>
+			<li><code>iface eth0 inet static</code></li>
+			<li><code>address</code>, <code>netmask</code>, <code>gateway</code></li>
+			<li><code>dns-nameservers</code>: utilié par resolvconf</li>
+			<li><code>dns-search</code>: utilié par resolvconf</li>
+		</ul></li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Activation/désactivation des interfaces</h1>
+<ul>
+	<li><code>ifup eth0</code></li>
+	<li><code>ifdown eth0</code></li>
+	<li><code>ip addr show</code></li>
+	<li><code>ip link show</code></li>
+	<li><code>ifconfig</code> , <code>ifconfig -a</code></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Exercice</h1>
+<ul>
+	<li>Configurer l&#8217;IP de la VM statiquement dans les fichiers (pas par NetworkManager)</li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>ssh/scp/sftp</h1>
+<ul>
+	<li>Serveur de commande à distance, basé sur rsh, mais en utilisant &#8230;</li>
+	<li>Cryptographie asymétrique</li>
+	<li>Méthode d&#8217;authenfication: mot de passe, clé, protection de la clé</li>
+	<li>Syntaxe:
+<pre>
+ssh username@host
+ssh username@host commande
+</pre>
+<pre>
+scp username@host:/path/to/file ./local/path
+scp -r username@host:/path/to/dir ./local/path
+</pre></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>ssh: tar et rsync</h1>
+<h2>On peut utiliser tar avec ssh:</h2>
+<pre>
+ssh username@host tar czf - /etc &gt; etc.tar.gz
+ssh username@host tar xzf - &lt; etc.tar.gz
+</pre>
+<h2>rsync utilise ssh par défaut pour se connecter à une autre machine.</h2>
+<pre>
+rsync -a --delete username@host:/path/to/dir/ /path/to/dir/
+</pre>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Exercices</h1>
+<ol>
+	<li>Se connecter en ssh sur sa VM en utilisant son IP de eth0</li>
+	<li>Faire une archive tar compressée de /etc dans /root, via ssh</li>
+	<li>Copier, avec scp, le contenu de /etc/ dans /var/tmp/etc</li>
+	<li>Effacer le contenu de /var/tmp/etc/X11</li>
+	<li>Utiliser rsync (via ssh) pour synchroniser /var/tmp/etc avec /etc</li>
+</ol>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Démarrage des services (buildroot)</h1>
+<ul>
+	<li>Un service est un processus géré au démarrage du système</li>
+	<li>Le noyau exécute /sbin/init au démarrage</li>
+	<li>/sbin/init est configuré par /etc/inittab</li>
+	<li>Les scripts de démarrage sont dans /etc/init.d/</li>
+	<li>/etc/init.d/S49bathium démarre tous les scripts /opt/etc/init.d/S??*</li>
+	<li>Les scripts de démarrage sont invoqués avec <code>start</code> comme argument
+	<ul>
+		<li>mais pas /etc/init.d/S49bathium</li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Gestion de l&#8217;espace disque</h1>
+<ul>
+	<li>Principes: disques, partitions, systèmes de fichiers
+	<ul>
+		<li>Le noyau affiche les partitions dans /proc/partitions</li>
+	</ul></li>
+	<li>Outils: disques et partitions
+	<ul>
+		<li><code>fdisk -l</code> , <code>fdisk /dev/sdb</code>, <code>partprobe</code></li>
+		<li><code>lsblk</code> (pas dans busybox)</li>
+		<li><code>cat</code> ! et <code>dd</code></li>
+	</ul></li>
+	<li>Outils: système de fichers
+	<ul>
+		<li><code>mkfs</code></li>
+	</ul></li>
+	<li>Outils: point de mountage
+	<ul>
+		<li><code>mount</code>/<code>umount</code></li>
+	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Gestion de l&#8217;espace disque</h1>
+<pre>
+fdisk -l /dev/vdb
+fdisk /dev/vdb
+fdisk -l /dev/vdb
+mkfs -t ext2 /dev/vdb1
+mount /dev/vdb1 /mnt
+umount /mnt
+cat /dev/vdb &gt; /dev/vdc
+partprobe
+mount /dev/vdc1 /mnt
+lsblk
+</pre>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Exercices</h1>
+<ol>
+	<li>Refaire une copie de disque comme vu précedemment en ajoutant deux disques de taille identiques sur votre VM.</li>
+</ol>
+
+</div>
+<div class='slide '>
+<!-- _S9SLIDE_ -->
+<h1>Lecture des logs</h1>
+<ul>
+	<li>syslog écoute sur /dev/log, pas de socket ip</li>
+	<li>syslog écrit sur /var/log, lien symbolique vers /tmp</li>
+	<li>/tmp est un ramdisk, pas de persistence</li>
+</ul></div>
+
+
+</div><!-- presentation -->
+</body>
+</html>
